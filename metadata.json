@@ -1,0 +1,6 @@
+{
+  "name": "শরীয়তপুর থেরাপি হাব",
+  "description": "শরীয়তপুর থেরাপি হাব (টাউন চিকন্দি বাজার, শরীয়তপুর সদর) - সুন্নতি হিজামা, আকুপাংচার, আকুপ্রেশার, আধুনিক ফিজিওথেরাপি, স্পিচ থেরাপি ও হোম ভিজিট কেয়ার।",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,856 @@
+import { ServiceItem, Therapist, Appointment, Review, ShopProduct, PainTherapyCondition } from '../types/therapy';
+
+export const CLINIC_INFO = {
+  nameEn: 'Shariatpur Therapy Hub',
+  nameBn: 'শরীয়তপুর থেরাপি হাব',
+  subNameEn: 'Ash-Shifa Natural Care & Holistic Therapy Centre',
+  subNameBn: 'আশ-শিফা ন্যাচারাল কেয়ার',
+  logo: '/assets/aistudio/file_00000000b4e081fa9e0e751d14b99b31_63b1797e.png',
+  doctorPortrait: '/assets/aistudio/file_00000000432c820ab1c9509d2ce5e9ba_16580075.png',
+  chamberPhoto: '/assets/aistudio/file_000000004d0c81fdb26ec484202a475d_3aa88992.png',
+  leadDoctorNameEn: 'Therapist Abdullah',
+  leadDoctorNameBn: 'থেরাপিস্ট আব্দুল্লাহ',
+  leadDoctorTitleEn: 'Shariatpur Therapy & Natural Medicine Specialist',
+  leadDoctorTitleBn: 'শরীয়তপুর থেরাপি ও প্রাকৃতিক চিকিৎসা বিশেষজ্ঞ',
+  locationEn: 'Town Chikandi Bazar (Beside Ice Cream Factory), Shariatpur Sadar, Bangladesh',
+  locationBn: 'টাউন চিকন্দি বাজার (আইসক্রিম ফ্যাক্টরির পাশে), শরীয়তপুর সদর, শরীয়তপুর',
+  addressEn: 'Town Chikandi Bazar (Beside Ice Cream Factory), Shariatpur Sadar-8000, Bangladesh',
+  addressBn: 'টাউন চিকন্দি বাজার (আইসক্রিম ফ্যাক্টরির পাশে), শরীয়তপুর সদর, শরীয়তপুর',
+  googleMapsUrl: 'https://maps.app.goo.gl/uz3aNCh8W6P3BHYV6?g_st=ac',
+  whatsapp: '01402893006',
+  whatsappFull: '+880 1402-893006',
+  whatsappClean: '8801402893006',
+  phone: '01402893006',
+  phoneFormatted: '+880 1402-893006',
+  email: 'ashshifanaturalcare@gmail.com',
+  hoursWeekdayEn: 'Saturday – Thursday: 8:30 AM – 8:30 PM',
+  hoursWeekdayBn: 'শনিবার – বৃহস্পতিবার: সকাল ৮:৩০ – রাত ৮:৩০',
+  hoursFridayEn: 'Friday: 2:30 PM – 8:30 PM (After Jummah)',
+  hoursFridayBn: 'শুক্রবার: দুপুর ২:৩০ – রাত ৮:৩০ (জুম্মার পর)',
+  upazilas: [
+    { en: 'Shariatpur Sadar (Town Chikandi)', bn: 'শরীয়তপুর সদর (টাউন চিকন্দি)' },
+    { en: 'Naria', bn: 'নড়িয়া' },
+    { en: 'Damudya', bn: 'ডামুড্যা' },
+    { en: 'Bhedarganj', bn: 'ভেদরগঞ্জ' },
+    { en: 'Gosairhat', bn: 'গোসাইরহাট' },
+    { en: 'Zanjira', bn: 'জাজিরা' }
+  ],
+  youtubeUrl: 'https://youtu.be/eAYjRqUVMEw?si=JFigJo93rnYUSY_1',
+  youtubeVideoId: 'eAYjRqUVMEw',
+  youtubeEmbedUrl: 'https://www.youtube-nocookie.com/embed/eAYjRqUVMEw',
+  youtubeChannelNameEn: 'Ash-Shifa Natural Care & Therapy Hub',
+  youtubeChannelNameBn: 'শরীয়তপুর থেরাপি হাব ও আশ-শিফা ইউটিউব চ্যানেল'
+};
+
+export const SERVICES_DATA: ServiceItem[] = [
+  {
+    id: 'hijama-cupping',
+    titleEn: 'Hijama & Cupping Therapy',
+    titleBn: 'হিজামা ও কাপিং থেরাপি',
+    category: 'hijama',
+    descEn: 'Sunnah-grounded hygienic wet and dry cupping performed with 100% sterile disposable kits to release toxic micro-stagnation, improve capillary circulation, and eliminate chronic muscle pain.',
+    descBn: 'সম্পূর্ণ ওয়ান-টাইম জীবাণুমুক্ত ভ্যাকুয়াম কাপ দিয়ে পরিচালিত নিরাপদ সুন্নতি হিজামা ও ড্রাই কাপিং সেবা। পুরুষ ও মহিলা রোগীদের জন্য পৃথক অভিজ্ঞ থেরাপিস্ট দ্বারা পরিচালিত। পুরনো বিষাক্ত রক্ত ও টক্সিন দূর করে বাতের ব্যথা, মাইগ্রেন ও ক্লান্তি দূর করে।',
+    duration: '45 - 60 Mins',
+    durationBn: '৪৫ - ৬০ মিনিট',
+    priceBdt: 700,
+    priceNoteEn: 'Includes new sterile disposable kit',
+    priceNoteBn: 'নতুন জীবাণুমুক্ত ওয়ান-টাইম কিট অন্তর্ভুক্ত',
+    idealForEn: ['Chronic Migraines & Headaches', 'Sciatica & Lower Back Pain', 'High Blood Pressure & Lethargy', 'Detoxification & Immunity'],
+    idealForBn: ['পুরনো মাইগ্রেন ও তীব্র মাথাব্যথা', 'সায়াটিকা ও কোমর ব্যথা', 'উচ্চ রক্তচাপ ও অলসতা', 'শরীর ডিটক্সিফিকেশন ও রোগ প্রতিরোধ'],
+    image: '/src/assets/images/hijama_therapy_man_1792462079847.jpg',
+    femaleImage: '/src/assets/images/hijama_therapy_woman_1792462080617.jpg',
+    recommendedSessions: '1 Session every 30-45 days',
+    featured: true
+  },
+  {
+    id: 'acupuncture',
+    titleEn: 'Acupuncture Therapy',
+    titleBn: 'আকুপাংচার থেরাপি',
+    category: 'acupuncture',
+    descEn: 'Precision meridian micro-needling with sterile ultra-fine single-use needles to stimulate natural endorphins, reset neuropathic pathways, and treat chronic nerve and joint disorders.',
+    descBn: 'অভিজ্ঞ আকুপাংচারিস্ট দ্বারা সূক্ষ্ম জীবাণুমুক্ত নিডল ব্যবহার করে স্নায়ুর কার্যক্ষমতা বৃদ্ধি, ক্রনিক মাথাব্যথা, ঘাড় ব্যথা, কাঁধের ব্যথা ও নার্ভাস সিস্টেম সচল করার প্রাচীন কার্যকরী চিকিৎসা।',
+    duration: '40 - 50 Mins',
+    durationBn: '৪০ - ৫০ মিনিট',
+    priceBdt: 800,
+    priceNoteEn: 'Per treatment session',
+    priceNoteBn: 'প্রতি সেশন',
+    idealForEn: ['Bell\'s Palsy / Facial Paralysis', 'Trigeminal Neuralgia', 'Cervical & Lumbar Spondylosis', 'Knee Arthritis & Tendonitis'],
+    idealForBn: ['মুখ বাঁকা হওয়া (বেলস্ পালসি)', 'ট্রাইজিমিনাল নিউরালজিয়া', 'ঘাড় ও কোমরের ক্ষয়জনিত নার্ভ পেইন', 'হাঁটুর বাতের ব্যথা'],
+    image: '/src/assets/images/acupuncture_head_neck_1792462080469.jpg',
+    recommendedSessions: '8 - 12 Sessions',
+    featured: true
+  },
+  {
+    id: 'acupressure',
+    titleEn: 'Acupressure & Trigger Point Therapy',
+    titleBn: 'আকুপ্রেশার ও ট্রিগার পয়েন্ট থেরাপি',
+    category: 'acupressure',
+    descEn: 'Needle-free therapeutic finger and palm compression targeting key reflexology and bio-energy points to release deep muscle spasms and relieve stress.',
+    descBn: 'কোনো সুই বা সুইয়ের ভয় ছাড়াই হাতের আঙুল ও বিশেষ প্রেসার পয়েন্টের মাধ্যমে কাঁধ ও ঘাড়ের পেশির শক্ত ভাব, টেনশন মাথাব্যথা ও ফ্রোজেন শোল্ডার দূরীকরণের প্রাকৃতিক আকুপ্রেশার থেরাপি।',
+    duration: '45 Mins',
+    durationBn: '৪৫ মিনিট',
+    priceBdt: 600,
+    priceNoteEn: 'Includes musculoskeletal assessment',
+    priceNoteBn: 'শারীরিক পরীক্ষা অন্তর্ভুক্ত',
+    idealForEn: ['Tension Headaches', 'Stiff Neck & Frozen Shoulder', 'Insomnia & Anxiety', 'Digestive Sluggishness'],
+    idealForBn: ['টেনশনজনিত মাথাব্যথা', 'ঘাড়ের আড়ষ্টতা ও শোল্ডার লক', 'অনিদ্রা ও অতিরিক্ত মানসিক চাপ', 'হজমের দুর্বলতা ও ক্লান্তি'],
+    image: '/src/assets/images/acupressure_pain_relief_1792462082689.jpg',
+    recommendedSessions: '6 - 10 Sessions',
+    featured: true
+  },
+  {
+    id: 'physiotherapy',
+    titleEn: 'Physiotherapy & Rehabilitation',
+    titleBn: 'আধুনিক ফিজিওথেরাপি ও রিহ্যাবিলিটেশন',
+    category: 'physio',
+    descEn: 'Evidence-based physical therapy incorporating manual manipulation, cervical/lumbar traction, therapeutic ultrasound, TENS, and posture correction.',
+    descBn: 'অভিজ্ঞ বি.এসসি ফিজিওথেরাপিস্ট দ্বারা আল্ট্রাসাউন্ড, ইলেকট্রোথেরাপি, ম্যানুয়াল মোবিলাইজেশন এবং ব্যায়ামের মাধ্যমে কোমর, ঘাড় ও হাঁটুর ব্যথার স্থায়ী সমাধান।',
+    duration: '45 - 60 Mins',
+    durationBn: '৪৫ - ৬০ মিনিট',
+    priceBdt: 650,
+    priceNoteEn: 'Per clinical session',
+    priceNoteBn: 'প্রতি ক্লিনিক্যাল সেশন',
+    idealForEn: ['Lumbar PLID & Sciatica', 'Knee Osteoarthritis', 'Post-Fracture Joint Stiffness', 'Sports & Ligament Injuries'],
+    idealForBn: ['কোমরের ডিস্ক প্রল্যাপস (PLID)', 'হাঁটুর ক্ষয় ও অস্টিওআর্থ্রাইটিস', 'প্লাস্টার খোলার পর জয়েন্ট জ্যাম', 'খেলাধুলার ইনজুরি'],
+    image: '/src/assets/images/therapy_hub_hero_1792459092728.jpg',
+    recommendedSessions: '10 - 15 Sessions',
+    featured: true
+  },
+  {
+    id: 'speech-therapy',
+    titleEn: 'Speech & Language Therapy',
+    titleBn: 'স্পিচ অ্যান্ড ল্যাঙ্গুয়েজ থেরাপি',
+    category: 'speech',
+    descEn: 'Comprehensive rehabilitation for speech delays in children, post-stroke speech loss (aphasia), stammering/stuttering, and swallowing disorders.',
+    descBn: 'দেরিতে কথা বলা শিশু, কথা আটকে যাওয়া বা তোতলামি এবং স্ট্রোক পরবর্তী কথা বলতে না পারা রোগীদের জন্য বিশেষায়িত স্পিচ অ্যান্ড ল্যাঙ্গুয়েজ থেরাপি।',
+    duration: '45 Mins',
+    durationBn: '৪৫ মিনিট',
+    priceBdt: 700,
+    priceNoteEn: 'Child & adult friendly specialized room',
+    priceNoteBn: 'শিশু ও বয়স্কদের জন্য বিশেষ ব্যবস্থা',
+    idealForEn: ['Childhood Speech Delay & Autism', 'Post-Stroke Aphasia / Dysarthria', 'Stuttering / Stammering', 'Swallowing Difficulties'],
+    idealForBn: ['শিশুর দেরিতে কথা বলা বা অটিজম', 'স্ট্রোকের পর কথা অস্পষ্ট হওয়া', 'তোতলামি ও কথা বাধাপ্রাপ্ত হওয়া', 'খাবার গিলতে সমস্যা'],
+    image: '/src/assets/images/rehab_stroke_mobility_1792459094091.jpg',
+    recommendedSessions: 'Structured Monthly Program',
+    featured: true
+  },
+  {
+    id: 'natural-healthcare',
+    titleEn: 'Natural Healthcare & Herbal Wellness',
+    titleBn: 'ন্যাচারাল হেলথকেয়ার ও প্রাকৃতিক নিরাময়',
+    category: 'natural',
+    descEn: 'Holistic lifestyle guidance, natural dietary balancing, herbal therapeutic wraps, and non-pharmacological care to strengthen the body’s self-healing mechanisms.',
+    descBn: 'ঔষধের পার্শ্বপ্রতিক্রিয়া ছাড়া প্রাকৃতিক খাদ্যাভ্যাস, ভেষজ সেক ও লাইফস্টাইল সমন্বয়ের মাধ্যমে শরীর সুস্থ ও রোগমুক্ত রাখার প্রাকৃতিক স্বাস্থ্যসেবা।',
+    duration: '40 Mins',
+    durationBn: '৪০ মিনিট',
+    priceBdt: 500,
+    priceNoteEn: 'Holistic consultation & diet blueprint',
+    priceNoteBn: 'পরামর্শ ও প্রাকৃতিক ডায়েট চার্টসহ',
+    idealForEn: ['Chronic Acidity & IBS', 'Metabolic Sluggishness & Obesity', 'Joint Inflammation', 'General Vitality Recovery'],
+    idealForBn: ['পুরনো গ্যাস্ট্রিক ও আইবিএস', 'অতিরিক্ত ওজন ও মেটাবলিজম সমস্যা', 'জয়েন্টের প্রদাহ', 'শরীরের ক্লান্তি ও দুর্বলতা'],
+    image: '/src/assets/images/natural_therapy_products_1792462083263.jpg',
+    recommendedSessions: 'Custom Consultation',
+    featured: true
+  },
+  {
+    id: 'neuro-stroke-rehab',
+    titleEn: 'Stroke & Paralysis Care',
+    titleBn: 'স্ট্রোক ও পক্ষাঘাত পুনর্বাসন',
+    category: 'neuro',
+    descEn: 'Intensive rehabilitation focusing on neuro-muscular re-education, parallel bar gait training, fine motor hand recovery, and bed mobility.',
+    descBn: 'প্যারালাইসিসে অচল হয়ে যাওয়া অঙ্গ-প্রত্যঙ্গে শক্তি সঞ্চার, ভারসাম্য এবং স্বাধীনভাবে চলাফেরার নিবিড় নিউরো থেরাপি।',
+    duration: '60 - 75 Mins',
+    durationBn: '৬০ - ৭৫ মিনিট',
+    priceBdt: 850,
+    priceNoteEn: 'Comprehensive rehabilitation',
+    priceNoteBn: 'সম্পূর্ণ শারীরিক রিহ্যাবিলিটেশন',
+    idealForEn: ['Hemiplegia / Stroke Paralysis', 'Spinal Cord Injury', 'Parkinson\'s Mobility Loss', 'Neuropathy'],
+    idealForBn: ['স্ট্রোকের কারণে অবশ হয়ে যাওয়া', 'স্পাইনাল কর্ড ইনজুরি', 'পারকিনসন্স রোগ', 'হাত-পায়ে অবশ অবশ ভাব'],
+    image: '/src/assets/images/rehab_stroke_mobility_1792459094091.jpg',
+    recommendedSessions: '14 - 24 Sessions'
+  },
+  {
+    id: 'home-therapy-care',
+    titleEn: 'Shariatpur Upazila Home Therapy',
+    titleBn: 'শরীয়তপুরের বিভিন্ন উপজেলায় হোম ভিজিট থেরাপি',
+    category: 'home',
+    descEn: 'Professional therapist house calls with portable electrotherapy units across Shariatpur Sadar, Naria, Damudya, Bhedarganj, Gosairhat, and Zanjira.',
+    descBn: 'বিছানা থেকে উঠতে না পারা বা ক্লিনিকে আসতে অক্ষম রোগীদের জন্য বাসায় গিয়ে সম্পূর্ণ থেরাপি প্রদানের বিশেষায়িত হোম সার্ভিস।',
+    duration: '60 Mins',
+    durationBn: '৬০ মিনিট',
+    priceBdt: 1200,
+    priceNoteEn: 'Includes travel and all equipment',
+    priceNoteBn: 'যাতায়াত ও আধুনিক ইকুইপমেন্ট সহ',
+    idealForEn: ['Bedridden Elderly Patients', 'Severe Acute Paralysis', 'Post-Op Knee/Hip Replacement', 'Female Patients at Home'],
+    idealForBn: ['শয্যাশায়ী বয়স্ক রোগী', 'গুরুতর প্যারালাইসিস রোগী', 'অপারেশন পরবর্তী চলাচলহীন রোগী', 'ঘরের স্বাচ্ছন্দ্যে থেরাপি সেবা'],
+    image: '/src/assets/images/therapy_hub_hero_1792459092728.jpg',
+    recommendedSessions: 'Flexible Schedule'
+  }
+];
+
+export const THERAPISTS_DIRECTORY: Therapist[] = [
+  {
+    id: 'th-abdullah',
+    nameEn: 'Therapist Abdullah',
+    nameBn: 'থেরাপিস্ট আব্দুল্লাহ',
+    designationEn: 'Founder & Chief Natural Medicine Specialist',
+    designationBn: 'প্রতিষ্ঠাতা ও প্রধান প্রাকৃতিক চিকিৎসা বিশেষজ্ঞ',
+    qualificationEn: 'Certified Hijama & Cupping Therapist, Clinical Acupuncture & Acupressure Specialist, Unani Medicine Consultant',
+    qualificationBn: 'সার্টিফাইড হিজামা (কাপিং) থেরাপিস্ট, আকুপাংচার ও আকুপ্রেশার বিশেষজ্ঞ, ইউনানি ও ন্যাচারাল কেয়ার কনসালট্যান্ট',
+    specialtyEn: 'Hijama Cupping, Acupuncture, Acupressure, Body Massage & Chronic Pain Relief',
+    specialtyBn: 'সুন্নতি হিজামা (কাপিং), আকুপাংচার, আকুপ্রেশার, বডি ম্যাসাজ ও পুরাতন বাত-ব্যথা চিকিৎসা',
+    specialties: ['hijama', 'acupuncture', 'acupressure', 'natural', 'physio', 'home'],
+    bioEn: 'Founder and Chief Specialist at Shariatpur Therapy Hub (Ash-Shifa Natural Care), Town Chikandi Bazar. Experienced in modern hygienic Hijama cupping, clinical acupuncture, acupressure, body massage, and natural pain relief for chronic arthritis, stroke weakness, migraines, and lifestyle ailments.',
+    bioBn: 'শরীয়তপুর থেরাপি হাব (আশ শিফা ন্যাচারাল কেয়ার)-এর প্রতিষ্ঠাতা ও প্রধান থেরাপিস্ট। টাউন চিকন্দি বাজারে অবস্থিত সেন্টারে সুন্নতি হিজামা, আধুনিক আকুপাংচার, আকুপ্রেশার এবং প্রাকৃতিক চিকিৎসার মাধ্যমে জটিল ও পুরাতন বাতের ব্যথা, মাইগ্রেন, প্যারালাইসিস ও শারীরিক দুর্বলতায় রোগীদের আন্তরিক সেবা প্রদান করছেন।',
+    experienceYears: 10,
+    availableDaysEn: 'Saturday – Thursday (8:30 AM – 8:30 PM) & Friday (After Jummah)',
+    availableDaysBn: 'শনিবার – বৃহস্পতিবার (সকাল ৮:৩০ – রাত ৮:৩০) ও শুক্রবার (জুম্মার পর)',
+    availableHours: '08:30 AM - 08:30 PM',
+    gender: 'male',
+    rating: 5.0,
+    reviewsCount: 268,
+    consultationFeeBdt: 600,
+    consultationType: 'both',
+    languagesSpoken: ['Bengali', 'English', 'Arabic'],
+    avatarInitial: 'TA',
+    avatarBg: 'bg-emerald-800',
+    image: '/assets/aistudio/file_00000000432c820ab1c9509d2ce5e9ba_16580075.png',
+    isLeadSpecialist: true
+  },
+  {
+    id: 'th-tariqul',
+    nameEn: 'Dr. Md. Tariqul Islam (PT)',
+    nameBn: 'ডাঃ মোঃ তরিকুল ইসলাম (পিটি)',
+    designationEn: 'Senior Consultant & Chief Physiotherapist',
+    designationBn: 'প্রধান কনসালট্যান্ট ও চিফ ফিজিওথেরাপিস্ট',
+    qualificationEn: 'B.Sc. in Physiotherapy (Faculty of Medicine, DU), PGT (Neuro-Rehab & Acupuncture)',
+    qualificationBn: 'বি.এসসি ইন ফিজিওথেরাপি (ঢাকা বিশ্ববিদ্যালয়), পিজিটি (নিউরো-রিহ্যাব ও আকুপাংচার)',
+    specialtyEn: 'Stroke Paralysis, Acupuncture & Spinal Pain Management',
+    specialtyBn: 'স্ট্রোক প্যারালাইসিস, আকুপাংচার ও মেরুদণ্ডের তীব্র ব্যথা নিরাময়',
+    specialties: ['physio', 'acupuncture', 'neuro', 'home'],
+    bioEn: 'Over 9 years of dedicated clinical experience in advanced stroke neuro-rehabilitation, spinal decompression, and clinical acupuncture. Led rehabilitation programs across major specialized centers and is committed to bringing top-tier therapy to Shariatpur.',
+    bioBn: 'দীর্ঘ ৯ বছরেরও বেশি সময় ধরে স্ট্রোক পুনর্বাসন, স্পাইনাল ট্র্যাকশন এবং ক্লিনিক্যাল আকুপাংচারে বিশেষ পারদর্শী। ঢাকা ও শরীয়তপুরে শত শত জটিল পক্ষাঘাত ও বাতের রোগীকে সফলভাবে স্বাভাবিক জীবনে ফিরিয়ে এনেছেন।',
+    experienceYears: 9,
+    availableDaysEn: 'Saturday – Thursday (9:00 AM – 2:00 PM & 4:30 PM – 8:30 PM)',
+    availableDaysBn: 'শনিবার – বৃহস্পতিবার (সকাল ৯:০০ – দুপুর ২:০০ ও বিকাল ৪:৩০ – রাত ৮:৩০)',
+    availableHours: '09:00 AM - 08:30 PM',
+    gender: 'male',
+    rating: 4.9,
+    reviewsCount: 142,
+    consultationFeeBdt: 700,
+    consultationType: 'both',
+    languagesSpoken: ['Bengali', 'English'],
+    avatarInitial: 'TI',
+    avatarBg: 'bg-emerald-700'
+  },
+  {
+    id: 'th-nusrat',
+    nameEn: 'Dr. Nusrat Jahan (PT)',
+    nameBn: 'ডাঃ নুসরাত জাহান (পিটি)',
+    designationEn: 'Consultant - Hijama Specialist & Female Healthcare',
+    designationBn: 'কনসালট্যান্ট - হিজামা স্পেশালিস্ট ও মহিলা স্বাস্থ্যসেবা',
+    qualificationEn: 'B.Sc. in Physiotherapy, Certified Hijama (Cupping) Practitioner, Acupressure Specialist',
+    qualificationBn: 'বি.এসসি ইন ফিজিওথেরাপি, সার্টিফাইড হিজামা প্র্যাকটিশনার, আকুপ্রেশার স্পেশালিস্ট',
+    specialtyEn: 'Hijama / Wet Cupping, Acupressure & Women\'s Musculoskeletal Care',
+    specialtyBn: 'সুন্নতি হিজামা, আকুপ্রেশার ও মহিলাদের কোমর-ঘাড়-হাঁটুর বাতের চিকিৎসা',
+    specialties: ['hijama', 'acupressure', 'natural', 'physio'],
+    bioEn: 'Specializes in women\'s private musculoskeletal rehabilitation, Sunnah-based sterile cupping therapy, and therapeutic acupressure. Dedicated to ensuring complete female privacy and gentle, empathetic patient care.',
+    bioBn: 'মহিলা রোগীদের জন্য পূর্ণ পর্দা ও নিরাপদ পরিবেশে হিজামা, আকুপ্রেশার এবং বাত-ব্যথার আধুনিক থেরাপিতে বিশেষভাবে অভিজ্ঞ। নারীদের দীর্ঘস্থায়ী মাইগ্রেন ও হাঁটু ব্যথায় ব্যাপক সফলতার সাথে সেবা দিয়ে আসছেন।',
+    experienceYears: 7,
+    availableDaysEn: 'Saturday – Thursday (10:00 AM – 6:00 PM)',
+    availableDaysBn: 'শনিবার – বৃহস্পতিবার (সকাল ১০:০০ – সন্ধ্যা ৬:০০)',
+    availableHours: '10:00 AM - 06:00 PM',
+    gender: 'female',
+    rating: 4.95,
+    reviewsCount: 189,
+    consultationFeeBdt: 650,
+    consultationType: 'clinic',
+    languagesSpoken: ['Bengali', 'English'],
+    avatarInitial: 'NJ',
+    avatarBg: 'bg-teal-700'
+  },
+  {
+    id: 'th-faisal',
+    nameEn: 'Md. Faisal Rahman (SLT)',
+    nameBn: 'মোঃ ফয়সাল রহমান (এসএলটি)',
+    designationEn: 'Speech & Language Pathologist',
+    designationBn: 'স্পিচ অ্যান্ড ল্যাঙ্গুয়েজ প্যাথলজিস্ট',
+    qualificationEn: 'B.Sc. in Speech & Language Therapy (CRP-DU Affiliate), Sensory Integration Trained',
+    qualificationBn: 'বি.এসসি ইন স্পিচ অ্যান্ড ল্যাঙ্গুয়েজ থেরাপি (সিআরপি-ঢাবি অধিভুক্ত), সেন্সরি ট্রেনিং প্রাপ্ত',
+    specialtyEn: 'Pediatric Speech Delay, Autism Communication, Post-Stroke Aphasia & Stuttering',
+    specialtyBn: 'শিশুদের দেরিতে কথা বলা, অটিজম, তোতলামি ও স্ট্রোকের পর কথা ফিরে পাওয়ার থেরাপি',
+    specialties: ['speech', 'neuro'],
+    bioEn: 'Passionate speech and communication specialist working with children experiencing developmental speech delay, articulation defects, and adults regaining speech after brain stroke or trauma.',
+    bioBn: 'শিশুদের ভাষা বিকাশ, তোতলামি সংশোধন এবং স্ট্রোকের পর কথা আটকে যাওয়া রোগীদের বাকশক্তি পুনরুদ্ধারে বিশেষ পারদর্শী। অত্যন্ত ধৈর্য ও শিশুবান্ধব পদ্ধতির জন্য অত্যন্ত প্রশংসিত।',
+    experienceYears: 6,
+    availableDaysEn: 'Saturday, Monday, Wednesday, Thursday (2:00 PM – 8:00 PM)',
+    availableDaysBn: 'শনিবার, সোমবার, বুধবার, বৃহস্পতিবার (দুপুর ২:০০ – রাত ৮:০০)',
+    availableHours: '02:00 PM - 08:00 PM',
+    gender: 'male',
+    rating: 4.88,
+    reviewsCount: 94,
+    consultationFeeBdt: 700,
+    consultationType: 'clinic',
+    languagesSpoken: ['Bengali', 'English'],
+    avatarInitial: 'FR',
+    avatarBg: 'bg-blue-700'
+  },
+  {
+    id: 'th-habib',
+    nameEn: 'Dr. Kazi Habibur Rahman (PT)',
+    nameBn: 'ডাঃ কাজী হাবিবুর রহমান (পিটি)',
+    designationEn: 'Orthopedic Rehabilitation & Home Visit Specialist',
+    designationBn: 'অর্থোপেডিক রিহ্যাব ও হোম ভিজিট স্পেশালিস্ট',
+    qualificationEn: 'B.Sc. in Physiotherapy, Certified Manual & Acupressure Therapist',
+    qualificationBn: 'বি.এসসি ইন ফিজিওথেরাপি, সার্টিফাইড ম্যানুয়াল ও আকুপ্রেশার থেরাপিস্ট',
+    specialtyEn: 'Knee Osteoarthritis, Frozen Shoulder & Shariatpur District Home Visits',
+    specialtyBn: 'হাঁটুর ক্ষয়রোগ, ফ্রোজেন শোল্ডার ও শরীয়তপুরের ৬টি উপজেলায় হোম ভিজিট',
+    specialties: ['physio', 'acupressure', 'home'],
+    bioEn: 'Leads our mobile home care outreach across Town Chikandi, Naria, Damudya, Bhedarganj, Gosairhat, and Zanjira. Brings hospital-grade rehabilitation directly to bedridden patients.',
+    bioBn: 'শরীয়তপুরের বিভিন্ন উপজেলায় শয্যাশায়ী রোগীদের ঘরে গিয়ে চিকিৎসা দেওয়ার ক্ষেত্রে নিবেদিতপ্রাণ। পোর্টেবল ইলেক্ট্রোথেরাপি ও ম্যানুয়াল থেরাপির মাধ্যমে রোগীদের স্বাচ্ছন্দ্যে চিকিৎসা দিয়ে থাকেন।',
+    experienceYears: 8,
+    availableDaysEn: 'Everyday including Friday (Home visits on scheduled booking)',
+    availableDaysBn: 'প্রতিদিন (শুক্রবারসহ পূর্ব বুকিং অনুযায়ী বাসায় সেবা)',
+    availableHours: '08:30 AM - 08:30 PM',
+    gender: 'male',
+    rating: 4.92,
+    reviewsCount: 160,
+    consultationFeeBdt: 750,
+    consultationType: 'both',
+    languagesSpoken: ['Bengali', 'English'],
+    avatarInitial: 'HR',
+    avatarBg: 'bg-emerald-800'
+  },
+  {
+    id: 'th-anowara',
+    nameEn: 'Dr. Anowara Begum (PT, N.D.)',
+    nameBn: 'ডাঃ আনোয়ারা বেগম (পিটি, এন.ডি.)',
+    designationEn: 'Natural Healthcare & Holistic Wellness Consultant',
+    designationBn: 'ন্যাচারাল হেলথকেয়ার ও হোলিস্টিক ওয়েলনেস কনসালট্যান্ট',
+    qualificationEn: 'Diploma in Naturopathy, Certified Dry/Wet Cupping, Acupressure Therapist',
+    qualificationBn: 'ডিপ্লোমা ইন ন্যাচারোপ্যাথি, সার্টিফাইড ড্রাই ও ওয়েট কাপিং, আকুপ্রেশার থেরাপিস্ট',
+    specialtyEn: 'Natural Healthcare, Cupping Therapy, Dietary Balance & Chronic Pain Detox',
+    specialtyBn: 'প্রাকৃতিক স্বাস্থ্যসেবা, সুন্নতি কাপিং, প্রাকৃতিক ডায়েট ও পুরনো ব্যথা দূরীকরণ',
+    specialties: ['natural', 'hijama', 'acupressure'],
+    bioEn: 'Dedicated to chemical-free holistic healing, incorporating non-invasive acupressure, hygienic cupping, and nutrition modifications to combat chronic joint inflammation and bodily fatigue.',
+    bioBn: 'ওষুধের পার্শ্বপ্রতিক্রিয়া মুক্ত প্রাকৃতিক নিরাময় পদ্ধতি, আকুপ্রেশার এবং স্বাস্থ্যকর জীবনধারা অনুসরণে বিশেষজ্ঞ। বয়স্ক ও নারীদের দীর্ঘস্থায়ী বাত-ব্যথা নিরসনে নির্ভরযোগ্য নাম।',
+    experienceYears: 10,
+    availableDaysEn: 'Sunday, Tuesday, Thursday, Friday (11:00 AM – 7:00 PM)',
+    availableDaysBn: 'রবিবার, মঙ্গলবার, বৃহস্পতিবার, শুক্রবার (সকাল ১১:০০ – সন্ধ্যা ৭:০০)',
+    availableHours: '11:00 AM - 07:00 PM',
+    gender: 'female',
+    rating: 4.91,
+    reviewsCount: 118,
+    consultationFeeBdt: 600,
+    consultationType: 'clinic',
+    languagesSpoken: ['Bengali', 'English'],
+    avatarInitial: 'AB',
+    avatarBg: 'bg-teal-800'
+  }
+];
+
+export const INITIAL_APPOINTMENTS: Appointment[] = [
+  {
+    id: 'STH-9041',
+    patientName: 'Al-Haj Abdul Malek',
+    patientPhone: '01712889900',
+    patientAge: '68',
+    patientGender: 'male',
+    serviceId: 'neuro-stroke-rehab',
+    serviceTitle: 'Stroke & Paralysis Care',
+    therapistId: 'th-tariqul',
+    therapistName: 'Dr. Md. Tariqul Islam (PT)',
+    visitType: 'center',
+    upazila: 'Shariatpur Sadar (Town Chikandi)',
+    date: '2026-10-22',
+    timeSlot: '10:30 AM',
+    notes: 'Right-side mobility recovery following stroke.',
+    status: 'confirmed',
+    createdAt: '2026-10-18T10:00:00Z',
+    totalBdt: 850
+  },
+  {
+    id: 'STH-8824',
+    patientName: 'Rokeya Begum',
+    patientPhone: '01819334455',
+    patientAge: '52',
+    patientGender: 'female',
+    serviceId: 'hijama-cupping',
+    serviceTitle: 'Hijama & Cupping Therapy',
+    therapistId: 'th-nusrat',
+    therapistName: 'Dr. Nusrat Jahan (PT)',
+    visitType: 'center',
+    upazila: 'Shariatpur Sadar (Town Chikandi)',
+    date: '2026-10-23',
+    timeSlot: '11:30 AM',
+    notes: 'Severe chronic migraine and upper back spasms.',
+    status: 'confirmed',
+    createdAt: '2026-10-19T08:30:00Z',
+    totalBdt: 700
+  },
+  {
+    id: 'STH-7319',
+    patientName: 'Master Matiur Rahman',
+    patientPhone: '01715443322',
+    patientAge: '64',
+    patientGender: 'male',
+    serviceId: 'home-therapy-care',
+    serviceTitle: 'Shariatpur Upazila Home Therapy',
+    therapistId: 'th-habib',
+    therapistName: 'Dr. Kazi Habibur Rahman (PT)',
+    visitType: 'home',
+    upazila: 'Naria',
+    address: 'Near Naria Bazar, Master Bari',
+    date: '2026-10-24',
+    timeSlot: '04:00 PM',
+    notes: 'Knee osteoarthritis with severe walking difficulty.',
+    status: 'confirmed',
+    createdAt: '2026-10-19T14:10:00Z',
+    totalBdt: 1200
+  }
+];
+
+export const PATIENT_REVIEWS: Review[] = [
+  {
+    id: 'rev-1',
+    name: 'Kazi Mofazzal Hossain',
+    area: 'Naria, Shariatpur',
+    serviceEn: 'Stroke Recovery & Acupuncture',
+    serviceBn: 'স্ট্রোক রিকভারি ও আকুপাংচার',
+    rating: 5,
+    date: '2026-10-12',
+    therapistName: 'Dr. Md. Tariqul Islam (PT)',
+    verified: true,
+    textEn: 'After my father suffered a stroke, we were worried about traveling to Dhaka. Shariatpur Therapy Hub at Town Chikandi Bazar provided excellent care. With Dr. Tariqul\'s acupuncture and neuro-physio, he is walking with minimal help!',
+    textBn: 'বাবার স্ট্রোকের পর ঢাকা যাওয়া নিয়ে খুব চিন্তায় ছিলাম। কিন্তু চিকন্দি বাজারে শরীয়তপুর থেরাপি হাবে ডাঃ তরিকুল স্যারের আকুপাংচার ও ফিজিওথেরাপিতে বাবা এখন নিজে হাঁটতে পারেন।'
+  },
+  {
+    id: 'rev-2',
+    name: 'Shamima Akhter',
+    area: 'Town Chikandi, Shariatpur Sadar',
+    serviceEn: 'Hijama Cupping & Acupressure',
+    serviceBn: 'হিজামা কাপিং ও আকুপ্রেশার',
+    rating: 5,
+    date: '2026-10-08',
+    therapistName: 'Dr. Nusrat Jahan (PT)',
+    verified: true,
+    textEn: 'I suffered from intense migraines for nearly 3 years. Dr. Nusrat Jahan provided clean, sterile Hijama and acupressure. Within two sessions, my head feels light and completely relieved. Highly recommended for women.',
+    textBn: '৩ বছর ধরে মাইগ্রেনের যন্ত্রণায় ভুগছিলাম। ডাঃ নুসরাত আপার হাতের জীবাণুমুক্ত সুন্নতি হিজামা ও আকুপ্রেশারে আমি আল্লাহর রহমতে এখন সম্পূর্ণ সুস্থ।'
+  },
+  {
+    id: 'rev-3',
+    name: 'Matiur Rahman Master',
+    area: 'Bhedarganj, Shariatpur',
+    serviceEn: 'Home Therapy Service',
+    serviceBn: 'উপজেলায় হোম থেরাপি সার্ভিস',
+    rating: 5,
+    date: '2026-09-28',
+    therapistName: 'Dr. Kazi Habibur Rahman (PT)',
+    verified: true,
+    textEn: 'Dr. Habib visited our home in Bhedarganj with modern therapy machines for my mother\'s severe knee osteoarthritis. Great dedication and punctuality.',
+    textBn: 'আম্মার হাঁটুর ব্যথার জন্য ভেদরগঞ্জে হোম সার্ভিসের সাহায্য নিয়েছিলাম। সময়মতো এসে আন্তরিকতার সাথে থেরাপি দিয়েছেন ডাঃ হাবিব। অসাধারণ উদ্যোগ।'
+  },
+  {
+    id: 'rev-4',
+    name: 'Rehana Sultana',
+    area: 'Damudya, Shariatpur',
+    serviceEn: 'Speech & Language Therapy',
+    serviceBn: 'শিশুদের স্পিচ থেরাপি',
+    rating: 5,
+    date: '2026-10-15',
+    therapistName: 'Md. Faisal Rahman (SLT)',
+    verified: true,
+    textEn: 'My 4-year-old son was not speaking clear sentences. After 10 speech sessions with Mr. Faisal at the Chikandi Hub, he can now express his needs clearly. Extremely patient and child-friendly!',
+    textBn: 'আমার ৪ বছরের ছেলে ঠিকমতো কথা বলতে পারছিল না। চিকন্দি হাবে ফয়সাল স্যারের কাছে ১০টি সেশনের পর সে এখন সুন্দরভাবে কথা বলতে পারছে।'
+  },
+  {
+    id: 'rev-5',
+    name: 'Al-Haj Sirajul Islam',
+    area: 'Zanjira, Shariatpur',
+    serviceEn: 'Spine & Disc Pain Physiotherapy',
+    serviceBn: 'কোমর ও ডিস্ক ব্যথার ফিজিওথেরাপি',
+    rating: 5,
+    date: '2026-10-02',
+    therapistName: 'Dr. Md. Tariqul Islam (PT)',
+    verified: true,
+    textEn: 'I had severe L4-L5 disc compression and could not bend down for prayer. The spinal traction and exercises restored my flexibility without taking heavy painkillers.',
+    textBn: 'কোমরের এল৪-এল৫ ডিস্কের ব্যথায় নামাজে সিজদা দিতে পারতাম না। এখানকার ট্র্যাকশন ও থেরাপিতে কোনো পেইনকিলার ছাড়াই এখন স্বাভাবিকভাবে নামাজ পড়তে পারছি।'
+  }
+];
+
+export const FAQS = [
+  {
+    qEn: 'Where is Shariatpur Therapy Hub located?',
+    qBn: 'শরীয়তপুর থেরাপি হাবের সঠিক অবস্থান কোথায়?',
+    aEn: 'We are conveniently located at Town Chikandi Bazar, Shariatpur Sadar, Bangladesh (easily accessible from Main Road & Bus Stand). WhatsApp: 01402893006.',
+    aBn: 'আমাদের কেন্দ্রটি শরীয়তপুর সদর উপজেলার ঐতিহ্যবাহী টাউন চিকন্দি বাজারে অবস্থিত (মেইন রোড ও বাসস্ট্যান্ডের কাছে)। যোগাযোগের নম্বর ও হোয়াটসঅ্যাপ: 01402893006।'
+  },
+  {
+    qEn: 'What services are available at the Hub?',
+    qBn: 'এখানে কী কী থেরাপি ও চিকিৎসা সেবা পাওয়া যায়?',
+    aEn: 'We provide certified Hijama (Cupping Therapy), Acupuncture, Acupressure, Physiotherapy, Speech Therapy, Natural Healthcare, Stroke & Paralysis Rehabilitation, and Home Visit services across all Shariatpur upazilas.',
+    aBn: 'এখানে অভিজ্ঞ চিকিৎসকদের মাধ্যমে হিজামা (কাপিং থেরাপি), আকুপাংচার, আকুপ্রেশার, আধুনিক ফিজিওথেরাপি, স্পিচ থেরাপি, ন্যাচারাল হেলথকেয়ার, স্ট্রোক রিহ্যাব এবং উপজেলাভিত্তিক হোম থেরাপি সেবা প্রদান করা হয়।'
+  },
+  {
+    qEn: 'How does the WhatsApp appointment booking work?',
+    qBn: 'হোয়াটসঅ্যাপের মাধ্যমে অ্যাপয়েন্টমেন্ট বুকিং কিভাবে কাজ করে?',
+    aEn: 'You can select your service, preferred therapist, date and time directly in the app. Once submitted, a pre-formatted booking slip is sent to our official WhatsApp 01402893006 for instant confirmation.',
+    aBn: 'অ্যাপে সেবা, পছন্দের থেরাপিস্ট, তারিখ ও সময় নির্বাচন করে সাবমিট করলেই একটি স্বয়ংক্রিয় বুকিং স্লিপ তৈরি হয় যা এক ক্লিকে অফিশিয়াল হোয়াটসঅ্যাপ 01402893006-এ পাঠানো যায়।'
+  },
+  {
+    qEn: 'Are female patients treated by female therapists?',
+    qBn: 'মহিলা রোগীদের চিকিৎসার জন্য কি আলাদা মহিলা থেরাপিস্ট আছেন?',
+    aEn: 'Yes! We have certified female physiotherapists, Hijama and natural care practitioners to guarantee full privacy, cultural respect, and dedicated care for women.',
+    aBn: 'হ্যাঁ! আমাদের ক্লিনিকে সার্বক্ষণিক সার্টিফাইড মহিলা থেরাপিস্ট ও হিজামা স্পেশালিস্ট রয়েছেন, যাতে নারী রোগীরা সম্পূর্ণ পর্দা ও স্বাচ্ছন্দ্যের সাথে চিকিৎসা গ্রহণ করতে পারেন।'
+  }
+];
+
+export const PAIN_TREATMENT_CONDITIONS: PainTherapyCondition[] = [
+  {
+    id: 'headache-migraine',
+    titleEn: 'Headaches, Migraines & Tension Relief',
+    titleBn: 'মাথাব্যথা ও মাইগ্রেনের সমন্বিত প্রাকৃতিক চিকিৎসা',
+    subtitleBn: 'টক্সিন মুক্তকরণ হিজামা, আকুপাংচার এবং রিলাক্সেশন থেরাপির মাধ্যমে মাথাব্যথা ও মাইগ্রেনের স্থায়ী উপশম',
+    commonCausesBn: [
+      'অতিরিক্ত মানসিক চাপ, ক্লান্তি ও অনিদ্রা',
+      'রক্তনালীর অস্বাভাবিক সংকোচন ও উচ্চ রক্তচাপ',
+      'দীর্ঘক্ষণ মোবাইল, কম্পিউটার বা ল্যাপটপ স্ক্রিনের দিকে তাকিয়ে থাকা',
+      'ঘাড়ের মাংসপেশির আড়ষ্টতা থেকে মাথায় ছড়িয়ে পড়া ব্যথা (Cervicogenic Headache)',
+      'ক্রনিক সাইনাস ও এলার্জিজনিত সমস্যা'
+    ],
+    symptomsBn: [
+      'মাথার একপাশে বা দুপাশে তীব্র দপদপানি যন্ত্রণা',
+      'চোখের পেছনে তীব্র চাপ ও আলো বা শব্দ সহ্য করতে না পারা',
+      'মাথাব্যথার সাথে বমি বমি ভাব বা অলসতা',
+      'ঘাড় ও কপালের রগ ফুলে শক্ত হয়ে থাকা'
+    ],
+    effectiveTherapies: [
+      {
+        serviceId: 'hijama-cupping',
+        therapyNameBn: 'সুন্নতি হিজামা (মাথা ও পিঠের বিশেষ পয়েন্টে)',
+        howItHelpsBn: 'মাথার পেছন (আল-কাহিল ও ইয়াফুখ) এবং কাঁধের নির্দিষ্ট হিজামা পয়েন্টে জমে থাকা বিষাক্ত রক্ত ও টক্সিন বের করে মস্তিষ্কে রক্ত চলাচল স্বাভাবিক করে। হাজারো মাইগ্রেন রোগী এতে দ্রুত দীর্ঘস্থায়ী আরাম পেয়েছেন।',
+        durationBn: '৪৫-৬০ মিনিট'
+      },
+      {
+        serviceId: 'acupuncture',
+        therapyNameBn: 'ক্লিনিক্যাল আকুপাংচার (Taiyang ও Fengchi পয়েন্ট)',
+        howItHelpsBn: 'সূক্ষ্ম জীবাণুমুক্ত সুঁই দিয়ে নার্ভের অতিরিক্ত উত্তেজনা কমায়, মস্তিষ্কে এন্ডোরফিন নামক প্রাকৃতিক পেইনকিলার হরমোন তৈরি বৃদ্ধি করে।',
+        durationBn: '৪০ মিনিট'
+      },
+      {
+        serviceId: 'acupressure',
+        therapyNameBn: 'আকুপ্রেশার ও ভেষজ কালোজিরা তেল মালিশ',
+        howItHelpsBn: 'হাতের তালুর হেগু (LI4) পয়েন্ট ও কপালে কোল্ড-প্রেসড কালোজিরা তেল দিয়ে গভীর ম্যাসাজে রক্তনালীর খিঁচুনি হ্রাস পায়।',
+        durationBn: '৩০ মিনিট'
+      }
+    ],
+    therapistAdviceBn: 'থেরাপিস্ট আব্দুল্লাহর বিশেষ পরামর্শ: বছরের পর বছর কড়া ব্যথানাশক ওষুধ খেলে কিডনি ও পাকস্থলীর ক্ষতি হয়। প্রাকৃতিক হিজামা ও আকুপাংচারের মাধ্যমে শরীরের প্রাকৃতিক রোগ প্রতিরোধ ক্ষমতা জাগ্রত করুন এবং প্রতি মাসে ১টি সুন্নতি হিজামা সেশন নিন।',
+    recommendedProducts: ['prod-black-seed-oil', 'prod-hijama-kit', 'prod-acupressure-mat'],
+    image: '/src/assets/images/acupuncture_head_neck_1792462080469.jpg'
+  },
+  {
+    id: 'neck-cervical-pain',
+    titleEn: 'Neck Pain & Cervical Spondylosis',
+    titleBn: 'ঘাড় ব্যথা ও সারভাইকাল স্পন্ডিলোসিস নিরাময়',
+    subtitleBn: 'সারভাইকাল নার্ভ রিলিজ, ড্রাই ও ওয়েট কাপিং এবং ইলেক্ট্রো-ফিজিওথেরাপির মাধ্যমে ঘাড়ের আড়ষ্টতা দূরীকরণ',
+    commonCausesBn: [
+      'খারাপ পজিশনে ঘুমানো বা উঁচু বালিশ ব্যবহার করা',
+      'একটানা মাথা নিচু করে মোবাইল দেখা বা কম্পিউটার কাজ (Text Neck Syndrome)',
+      'সারভাইকাল কশেরুকার ক্ষয় ও ডিস্ক প্রল্যাপস (C5-C6, C6-C7)',
+      'হঠাৎ ঘাড়ে বাতাস লাগা বা পেশির খিঁচুনি (Stiff Neck)'
+    ],
+    symptomsBn: [
+      'ঘাড় ডানে-বামে ঘোরাতে প্রচণ্ড তীব্র ব্যথা',
+      'ঘাড়ের পেছনের মাংসপেশি শক্ত পাথরের মতো হয়ে যাওয়া',
+      'ব্যথা ঘাড় থেকে কাঁধ হয়ে হাতের আঙুল পর্যন্ত নেমে যাওয়া ও ঝিঁঝিঁ ধরা',
+      'মাথা ঘোরা ও দীর্ঘক্ষণ সোজা হয়ে বসে থাকতে কষ্ট'
+    ],
+    effectiveTherapies: [
+      {
+        serviceId: 'acupressure',
+        therapyNameBn: 'আকুপ্রেশার ও ট্রিগার পয়েন্ট থেরাপি',
+        howItHelpsBn: 'ট্রাপিজিয়াস ও সারভাইকাল পেশির জমাট বাঁধা ট্রিগার পয়েন্টগুলোতে নিয়ন্ত্রিত আঙুলের চাপে রক্তপ্রবাহ বাড়িয়ে মাংসপেশি নরম করে।',
+        durationBn: '৪৫ মিনিট'
+      },
+      {
+        serviceId: 'acupuncture',
+        therapyNameBn: 'সারভাইকাল আকুপাংচার ও নার্ভ স্টিমুলেশন',
+        howItHelpsBn: 'চাপা পড়া নার্ভের প্রদাহ দূর করে এবং হাতে অবশ ভাব বা ঝিঁঝিঁ ধরা অনুভূতি বন্ধ করে।',
+        durationBn: '৪০ মিনিট'
+      },
+      {
+        serviceId: 'physiotherapy',
+        therapyNameBn: 'ম্যানুয়াল ট্রাকশন ও আধুনিক আল্ট্রাসাউন্ড',
+        howItHelpsBn: 'কশেরুকার মধ্যবর্তী দূরত্ব স্বাভাবিক করে এবং গরম ভেষজ সেক দিয়ে ব্যথা নির্মূল করে।',
+        durationBn: '৪৫-৬০ মিনিট'
+      }
+    ],
+    therapistAdviceBn: 'থেরাপিস্ট আব্দুল্লাহর বিশেষ পরামর্শ: একটানা ৩০ মিনিটের বেশি মাথা ঝুঁকিয়ে মোবাইল চালাবেন না। ঘুমানোর সময় পাতলা বালিশ ব্যবহার করুন এবং চিকিৎসকের নির্দেশ অনুযায়ী নিয়মিত সারভাইকাল সাপোর্ট কলার পরুন।',
+    recommendedProducts: ['prod-cervical-collar', 'prod-pain-relief-oil', 'prod-tens-unit'],
+    image: '/src/assets/images/acupressure_pain_relief_1792462082689.jpg'
+  },
+  {
+    id: 'shoulder-frozen-pain',
+    titleEn: 'Shoulder Pain & Frozen Shoulder',
+    titleBn: 'কাঁধ ব্যথা ও ফ্রোজেন শোল্ডার (Frozen Shoulder) চিকিৎসা',
+    subtitleBn: 'রোটেটর কাফ পুনর্বাসন, ম্যানুয়াল মোবিলাইজেশন এবং ব্যথামুক্ত স্বাভাবিক হাত ওঠানো-নামানোর সেবা',
+    commonCausesBn: [
+      'ডায়াবেটিসের কারণে কাঁধের ক্যাপসুল শক্ত ও আড়ষ্ট হয়ে যাওয়া (Adhesive Capsulitis)',
+      'ভারী জিনিস তুলতে গিয়ে রোটেটর কাফ টেন্ডনে টান বা ছিঁড়ে যাওয়া',
+      'কাঁধের জয়েন্টে সাইনোভিয়াল ফ্লুইড কমে ক্যালসিফিকেশন জমা হওয়া',
+      'প্লাস্টার বা আঘাতের পর দীর্ঘদিন হাত স্থির রাখা'
+    ],
+    symptomsBn: [
+      'হাত পিঠের পেছনে নিতে না পারা বা জামা পরতে তীব্র কষ্ট',
+      'রাতে ব্যথার কারণে কাঁধের ওপর ভর দিয়ে শুতে না পারা',
+      'হাত সোজা করে মাথার ওপর তোলার সময় আটকে যাওয়া বা তীব্র চিলিক মারা ব্যথা',
+      'দিন দিন হাত নাড়ানোর ক্ষমতা সংকুচিত হয়ে আসা'
+    ],
+    effectiveTherapies: [
+      {
+        serviceId: 'physiotherapy',
+        therapyNameBn: 'শোল্ডার ম্যানুয়াল মোবিলাইজেশন ও থেরাপিউটিক আল্ট্রাসাউন্ড',
+        howItHelpsBn: 'জমে যাওয়া জয়েন্ট ক্যাপসুলকে ধাপে ধাপে আলতো করে প্রসারিত করে হাত ঘোরানোর পূর্ণ ক্ষমতা (Range of Motion) ফিরিয়ে আনে।',
+        durationBn: '৫০ মিনিট'
+      },
+      {
+        serviceId: 'hijama-cupping',
+        therapyNameBn: 'হিজামা ও মুভিং কাপিং থেরাপি',
+        howItHelpsBn: 'কাঁধের চারপাশের গভীর রক্তনালীর প্রদাহ শুষে নেয় এবং পেশির আড়ষ্টতা ভেঙে দেয়। পুরুষ ও মহিলাদের জন্য আলাদা কক্ষ ও থেরাপিস্ট উপলব্ধ।',
+        durationBn: '৪৫ মিনিট'
+      },
+      {
+        serviceId: 'acupressure',
+        therapyNameBn: 'আকুপ্রেশার ও ভেষজ ব্যথানাশক মালিশ',
+        howItHelpsBn: 'Jianyu (LI15) এবং Jianjing (GB21) পয়েন্টে প্রেসার দিয়ে তাৎক্ষণিক ব্যথা উপশম করা হয়।',
+        durationBn: '৪০ মিনিট'
+      }
+    ],
+    therapistAdviceBn: 'থেরাপিস্ট আব্দুল্লাহর বিশেষ পরামর্শ: ফ্রোজেন শোল্ডার কখনোই একা একা ভালো হয় না, উল্টো সময় বাড়লে হাত পুরোপুরি অবশ হয়ে যায়। দ্রুত ফিজিওথেরাপি ও কাপিং শুরু করলে ২-৩ সপ্তাহের মধ্যেই ব্যথাহীনভাবে হাত উপরে তোলা সম্ভব।',
+    recommendedProducts: ['prod-pain-relief-oil', 'prod-tens-unit', 'prod-hijama-kit'],
+    image: '/src/assets/images/hijama_therapy_man_1792462079847.jpg'
+  }
+];
+
+export const SHOP_PRODUCTS_DATA: ShopProduct[] = [
+  {
+    id: 'prod-hijama-kit',
+    nameEn: 'Sterile Hijama Cupping Kit (12 Cups + Suction Gun)',
+    nameBn: 'প্রিমিয়াম সুন্নতি হিজামা কিট (১২ কাপ + হ্যান্ড সাকশন গান)',
+    category: 'hijama',
+    priceBdt: 950,
+    originalPriceBdt: 1200,
+    rating: 4.95,
+    reviewsCount: 142,
+    descEn: 'Medical grade sterile suction cupping set with 12 multi-size transparent cups, durable vacuum pump gun, connecting extension hose, and magnetic acupressure points.',
+    descBn: 'অরিজিনাল মেডিকেল গ্রেড পলিকার্বনেট ১২টি ভিন্ন সাইজের স্বচ্ছ কাপ, শক্তিশালী ভ্যাকুয়াম গান, এক্সটেনশন পাইপ এবং ম্যাগনেটিক প্রেসার পিনসহ পূর্ণাঙ্গ হিজামা কিট। ঘরে বসে ড্রাই কাপিং ও ক্লিনিক্যাল ব্যবহারের উপযোগী।',
+    benefitsBn: [
+      'রক্তসঞ্চালন বৃদ্ধি করে শরীরের বিষাক্ত টক্সিন বের করতে সাহায্য করে',
+      'পিঠ, কোমর, ঘাড় ও হাঁটুর পেশির তীব্র আড়ষ্টতা দ্রুত শিথিল করে',
+      'সম্পূর্ণ আনব্রেকেবল ও টেকসই ফুড-গ্রেড স্বচ্ছ উপাদান',
+      'হাতের নাগালের বাইরে নিজে নিজেই কাপিং করার সুবিধাজনক লম্বা টিউব'
+    ],
+    usageBn: 'পছন্দসই সাইজের কাপ ত্বকে স্থাপন করে হ্যান্ড পাম্পের সাহায্যে ২-৩ বার চাপ দিয়ে ভ্যাকুয়াম তৈরি করুন। ৫-১০ মিনিট পর হলুদ রিলিজ ভাল্ব টেনে বাতাস বের করে নিন।',
+    image: '/src/assets/images/natural_therapy_products_1792462083263.jpg',
+    inStock: true,
+    featured: true,
+    recommendedFor: ['কোমর ব্যথা', 'ঘাড় ব্যথা', 'মাইগ্রেন', 'বাত ব্যথা']
+  },
+  {
+    id: 'prod-black-seed-oil',
+    nameEn: 'Ash-Shifa Pure Cold-Pressed Black Seed Oil (100ml)',
+    nameBn: 'আশ-শিফা খাঁটি কোল্ড-প্রেসড কালোজিরা তেল (১০০ মিলি)',
+    category: 'herbal_oils',
+    priceBdt: 350,
+    originalPriceBdt: 420,
+    rating: 5.0,
+    reviewsCount: 215,
+    descEn: '100% natural, virgin, unrefined Nigella Sativa oil cold-pressed under hygienic supervision by Ash-Shifa Natural Care for maximum thymoquinone potency.',
+    descBn: 'আশ-শিফা ন্যাচারাল কেয়ারের নিজস্ব তত্ত্বাবধানে বাছাইকৃত প্রথম শ্রেণীর কালোজিরা থেকে কোল্ড-প্রেসড পদ্ধতিতে প্রস্তুতকৃত শতভাগ খাঁটি ও বিশুদ্ধ তেল। রাসায়নিকমুক্ত ও থাইমোকুইনন সমৃদ্ধ।',
+    benefitsBn: [
+      'রাসূলুল্লাহ (সাঃ) এর সুন্নতি মহৌষধ - মৃত্যু ছাড়া সকল রোগের মহৌষধ',
+      'মাথাব্যথা ও মাইগ্রেনে কপালে আলতো ম্যাসাজে চমৎকার প্রশান্তি দেয়',
+      'হাঁপানি, শ্বাসকষ্ট, সর্দি ও রোগ প্রতিরোধ ক্ষমতা (Immunity) বহুগুণ বৃদ্ধি করে',
+      'বাত-ব্যথার স্থানে নিয়মিত মালিশে হাড় ও জয়েন্টের পুষ্টি জোগায়'
+    ],
+    usageBn: 'খাওয়ার জন্য: প্রতিদিন সকালে আধা চা চামচ মধু বা হালকা গরম পানিতে মিশিয়ে। ব্যথার জন্য: আক্রান্ত স্থানে সামান্য গরম করে দিনে ২ বার মালিশ করুন।',
+    image: '/src/assets/images/natural_therapy_products_1792462083263.jpg',
+    inStock: true,
+    featured: true,
+    recommendedFor: ['মাইগ্রেন', 'হাঁপানি', 'বাতের ব্যথা', 'রোগ প্রতিরোধ']
+  },
+  {
+    id: 'prod-pain-relief-oil',
+    nameEn: 'Natural Herbal Joint & Muscle Pain Relief Oil (120ml)',
+    nameBn: 'প্রাকৃতিক ভেষজ বাত-ব্যথা মালিশ তেল (১২০ মিলি - স্পেশাল ফর্মুলা)',
+    category: 'herbal_oils',
+    priceBdt: 450,
+    originalPriceBdt: 550,
+    rating: 4.9,
+    reviewsCount: 184,
+    descEn: 'Therapeutic Ayurvedic & Unani herbal oil infused with camphor, eucalyptus, wintergreen, black seed, and ginger extracts to soothe deep nerve inflammation.',
+    descBn: 'থেরাপিস্ট আব্দুল্লাহর বিশেষ ফর্মুলায় তৈরি তিল তেল, কালোজিরা তেল, লবঙ্গ, দারুচিনি, কর্পূর ও পুদিনা পাতার নির্যাসসমৃদ্ধ প্রাকৃতিক ব্যথানাশক ভেষজ তেল।',
+    benefitsBn: [
+      'কোমর ব্যথা (PLID), সায়াটিকা ও হাঁটুর বাত-ব্যথায় দ্রুত আরাম প্রদান করে',
+      'ঘাড়ের ক্ষয় ও কাঁধের ফ্রোজেন শোল্ডারে রক্তপ্রবাহ সচল করে',
+      'পেশির খিঁচুনি ও টান লাগা ব্যথা এক ঘণ্টার মধ্যে উপশম করে',
+      'কোনো পার্শ্বপ্রতিক্রিয়া ছাড়া দীর্ঘস্থায়ী ব্যবহারযোগ্য'
+    ],
+    usageBn: 'ব্যথার স্থানে কয়েক ফোঁটা তেল দিয়ে ৫-৭ মিনিট নিচ থেকে উপরের দিকে হালকা হাতে ম্যাসাজ করুন। এরপর চাইলে হালকা গরম সেক নিতে পারেন।',
+    image: '/src/assets/images/natural_therapy_products_1792462083263.jpg',
+    inStock: true,
+    featured: true,
+    recommendedFor: ['হাঁটু ব্যথা', 'কোমর ব্যথা', 'ঘাড় ব্যথা', 'ফ্রোজেন শোল্ডার']
+  },
+  {
+    id: 'prod-lumbar-belt',
+    nameEn: 'Orthopedic Double-Pull Lumbar Spine Support Belt',
+    nameBn: 'অর্থোপেডিক ডাবল-পুল লাম্বার ব্যাক সাপোর্ট বেল্ট (কোমর ব্যথার বেল্ট)',
+    category: 'orthopedic',
+    priceBdt: 850,
+    originalPriceBdt: 1100,
+    rating: 4.88,
+    reviewsCount: 97,
+    descEn: 'Ergonomic lumbar corset featuring 4 flexible steel stays, breathable mesh fabric, and double-pull compression straps to stabilize L4-L5-S1 spinal vertebrae.',
+    descBn: 'মেরুদণ্ডের L4-L5 ডিস্ক প্রল্যাপস ও সায়াটিকা রোগীদের জন্য বিশেষ অর্থোপেডিক বেল্ট। ৪টি শক্ত ধাতব সাপোর্ট প্লেট ও বাতাস চলাচলের উপযুক্ত আরামদায়ক ফ্যাব্রিক।',
+    benefitsBn: [
+      'ভারী কাজ বা বসার সময় মেরুদণ্ডের ওপর অতিরিক্ত ওজনের চাপ দূর করে',
+      'নামাজে ওঠা-বসায় বা চলাফেরায় কোমরের আকস্মিক মোচড় থেকে রক্ষা করে',
+      'উভয় পাশের ডাবল স্ট্র্যাপের সাহায্যে প্রয়োজনমতো টাইট বা লুজ করা যায়',
+      'পোশাকের নিচে সহজে ও আরামদায়কভাবে ব্যবহারযোগ্য'
+    ],
+    usageBn: 'কোমরের পেছনে সাপোর্ট প্লেট রেখে সামনে এনে প্রথম স্ট্র্যাপ লাগান, এরপর দুই পাশের এক্সট্রা ইলাস্টিক বেল্ট টেনে উপযুক্ত চাপে সেট করুন।',
+    image: '/src/assets/images/therapy_hub_hero_1792459092728.jpg',
+    inStock: true,
+    featured: true,
+    recommendedFor: ['কোমর ব্যথা', 'PLID', 'সায়াটিকা', 'স্পাইনাল ইনজুরি']
+  },
+  {
+    id: 'prod-cervical-collar',
+    nameEn: 'Soft Foam Cervical Neck Support Collar',
+    nameBn: 'অর্থোপেডিক নরম সারভাইকাল কলার (ঘাড়ের ব্যথানাশক বেল্ট)',
+    category: 'orthopedic',
+    priceBdt: 450,
+    originalPriceBdt: 550,
+    rating: 4.82,
+    reviewsCount: 76,
+    descEn: 'High-density contoured soft foam neck brace designed to support cervical spine alignment, limit painful neck extension, and relieve pinched nerve pressure.',
+    descBn: 'ঘাড়ের ক্ষয়জনিত ব্যথা, সারভাইকাল স্পন্ডিলোসিস ও অতিরিক্ত মোবাইল ব্যবহারের ঘাড়ের আড়ষ্টতায় আরামদায়ক ফোম কলার। ভেলক্রো অ্যাডজাস্টেবল লক।',
+    benefitsBn: [
+      'মাথার ওজনকে আলতোভাবে ধারণ করে ঘাড়ের কশেরুকার ওপর চাপ কমায়',
+      'ঘাড় বাঁকা হওয়া বা নার্ভে খোঁচা লাগা রোধ করে',
+      'অত্যন্ত নরম ও অ্যালার্জি-মুক্ত কটন কভারযুক্ত',
+      'ঘুমের সময় ও কম্পিউটারে কাজ করার সময় ব্যবহার করা যায়'
+    ],
+    usageBn: 'থুতনির নিচে কলারের বাঁকানো খাঁজটি রেখে পেছনের ভেলক্রো বেল্ট দিয়ে আরামদায়কভাবে আটকে নিন।',
+    image: '/src/assets/images/acupuncture_head_neck_1792462080469.jpg',
+    inStock: true,
+    recommendedFor: ['ঘাড় ব্যথা', 'সারভাইকাল স্পন্ডিলোসিস', 'মাথাব্যথা']
+  },
+  {
+    id: 'prod-knee-brace',
+    nameEn: 'Orthopedic Hinged Knee Support Brace with Patella Gel Pad',
+    nameBn: 'অর্থোপেডিক হাঁটু সাপোর্ট ব্রেস (জেল প্যাড ও সাইড স্প্রিংসহ)',
+    category: 'orthopedic',
+    priceBdt: 750,
+    originalPriceBdt: 950,
+    rating: 4.91,
+    reviewsCount: 112,
+    descEn: 'Medical grade 3D knitted compression knee sleeve with silicone patella shock absorber and dual side spring stabilizers for arthritis and ligament recovery.',
+    descBn: 'হাঁটুর ক্ষয় ও লিগামেন্ট ইনজুরির জন্য প্রিমিয়াম নি-ব্রেস। হাঁটুর বাটিতে নরম সিলিকন জেল প্যাড এবং দুই পাশে নমনীয় মেটাল স্প্রিং স্ট্যাবিলাইজার রয়েছে।',
+    benefitsBn: [
+      'সিঁড়ি দিয়ে ওঠা-নামা বা হাঁটার সময় হাঁটুর তীব্র কটকট শব্দ ও ব্যথা রোধ করে',
+      'হাঁটুর জয়েন্ট পিছলে যাওয়া বা ভারসাম্য হারানো থেকে রক্ষা করে',
+      'ঘাম শোষক ইলাস্টিক ম্যাটেরিয়াল, পা বাঁকাতে কোনো অসুবিধা হয় না'
+    ],
+    usageBn: 'সিলিকন রিংটি হাঁটুর বাটির ওপর ঠিকমতো বসিয়ে মোজার মতো করে টেনে পরে নিন। নামাজে বা হাঁটার সময় নিয়মিত পরুন।',
+    image: '/src/assets/images/physiotherapy_treatment_1792459094612.jpg',
+    inStock: true,
+    recommendedFor: ['হাঁটু ব্যথা', 'অস্টিওআর্থ্রাইটিস', 'লিগামেন্ট ইনজুরি']
+  },
+  {
+    id: 'prod-tens-unit',
+    nameEn: 'Rechargeable Digital TENS & EMS Body Stimulator Unit',
+    nameBn: 'ডিজিটাল TENS ইলেকট্রিক বডি পেইন রিলিফ মেশিন (রিচার্জেবল)',
+    category: 'devices',
+    priceBdt: 1250,
+    originalPriceBdt: 1500,
+    rating: 4.86,
+    reviewsCount: 68,
+    descEn: 'Dual-channel portable micro-current electrotherapy device with LCD screen, 16 massage modes, and 4 reusable electrode pads for home clinical therapy.',
+    descBn: 'ঘরে বসেই ফিজিওথেরাপি সেন্টারের মতো ইলেকট্রোথেরাপি নেওয়ার বহনযোগ্য TENS মেশিন। ১৬টি মোড ও ৮টি সেলফ-অ্যাধেসিভ প্যাডসহ রিচার্জেবল ডিভাইস।',
+    benefitsBn: [
+      'পেশির গভীরে বৈদ্যুতিক স্পন্দনের মাধ্যমে স্নায়ুর ব্যথা অবশ ও নির্মূল করে',
+      'প্যারালাইসিস ও স্ট্রোকের পর হাত-পায়ের অবশ পেশিতে শক্তি সঞ্চার করে',
+      'পিঠ, কাঁধ, কোমর, ঘাড় ও পায়ের যে কোনো ব্যথায় ব্যবহার উপযোগী'
+    ],
+    usageBn: 'আক্রান্ত ব্যথার স্থানে ২টি প্যাড লাগিয়ে ওয়্যার মেশিনে যুক্ত করে সুইচ অন করুন। পছন্দের তীব্রতা (Intensity) নির্বাচন করে ১৫-২০ মিনিট থেরাপি নিন।',
+    image: '/src/assets/images/natural_therapy_products_1792462083263.jpg',
+    inStock: true,
+    recommendedFor: ['স্ট্রোক রিহ্যাব', 'কোমর ব্যথা', 'কাঁধ ব্যথা', 'পেশির খিঁচুনি']
+  },
+  {
+    id: 'prod-acupressure-mat',
+    nameEn: 'Reflexology Foot Acupressure Walk Mat',
+    nameBn: 'রিফ্লেক্সোলজি ফুট আকুপ্রেশার ম্যাট (রক্তসঞ্চালন উদ্দীপক)',
+    category: 'devices',
+    priceBdt: 550,
+    originalPriceBdt: 700,
+    rating: 4.79,
+    reviewsCount: 54,
+    descEn: 'Bio-magnetic reflexology foot pathway embedded with hundreds of calibrated pressure nodes targeting nerve endings of vital organs.',
+    descBn: 'হাতের ও পায়ের তলার আকুপ্রেশার পয়েন্ট উদ্দীপিত করার বিশেষ ম্যাট। প্রতিদিন মাত্র ১০ মিনিট দাঁড়ালে পুরো শরীরের নার্ভাস সিস্টেম সক্রিয় হয়।',
+    benefitsBn: [
+      'পায়ে রক্ত চলাচল সচল করে ঘুমের গভীরতা বৃদ্ধি ও মানসিক ক্লান্তি দূর করে',
+      'উচ্চ রক্তচাপ, মেটাবলিজম ও হজমের দুর্বলতা কমাতে অত্যন্ত কার্যকরী',
+      'সহজে ভাঁজ করে যে কোনো স্থানে নিয়ে যাওয়া যায়'
+    ],
+    usageBn: 'প্রতিদিন সকালে বা সন্ধ্যায় খালি পায়ে ম্যাটের ওপর ৫ থেকে ১০ মিনিট ধীরে ধীরে হাঁটুন বা দাঁড়িয়ে মৃদু পা চাপুন।',
+    image: '/src/assets/images/natural_therapy_products_1792462083263.jpg',
+    inStock: true,
+    recommendedFor: ['অনিদ্রা', 'উচ্চ রক্তচাপ', 'ক্লান্তি', 'পায়ে ঝিঁঝিঁ ধরা']
+  },
+  {
+    id: 'prod-unani-digestive',
+    nameEn: 'Unani Natural Digestive & Stomach Acidity Herbal Formula (200g)',
+    nameBn: 'ইউনানি প্রাকৃতিক হজম ও গ্যাস্ট্রিক কেয়ার চূর্ণ (২০০ গ্রাম)',
+    category: 'unani',
+    priceBdt: 320,
+    originalPriceBdt: 400,
+    rating: 4.93,
+    reviewsCount: 136,
+    descEn: 'Traditional herbal blend of ajwain, fennel, mint, black salt, and senna leaf to balance gut microbiome and clear chronic gastric reflux.',
+    descBn: 'আমলকী, হরীতকী, বহেড়া, জোয়ান, মৌরি, বিট লবণ ও পুদিনার সমন্বয়ে প্রাকৃতিক ইউনানি পাউডার। কোনো কৃত্রিম কেমিক্যাল ছাড়া তৈরি।',
+    benefitsBn: [
+      'পুরনো গ্যাস্ট্রিক, পেট ফাঁপা, বুক জ্বালাপোড়া ও টক ঢেঁকুর চিরতরে দূর করে',
+      'হজমশক্তি বৃদ্ধি করে ক্ষুধা স্বাভাবিক করে এবং কোষ্ঠকাঠিন্য দূর করে',
+      'আইবিএস (IBS) ও পেটের মেটাবলিজম সুস্থ রাখে'
+    ],
+    usageBn: 'প্রতিদিন দুপুর ও রাতের খাবারের পর ১ চা চামচ পাউডার আধা গ্লাস সাধারণ পানিতে মিশিয়ে পান করুন।',
+    image: '/src/assets/images/natural_therapy_products_1792462083263.jpg',
+    inStock: true,
+    recommendedFor: ['গ্যাস্ট্রিক', 'আইবিএস', 'কোষ্ঠকাঠিন্য', 'পেট ফাঁপা']
+  },
+  {
+    id: 'prod-stroke-grip-ball',
+    nameEn: 'Stroke Recovery Hand Grip Finger Exerciser Egg Ball',
+    nameBn: 'স্ট্রোক ও নার্ভ রিহ্যাবিলিটেশন হ্যান্ড গ্রিপ এক্সারসাইজার বল',
+    category: 'devices',
+    priceBdt: 250,
+    originalPriceBdt: 300,
+    rating: 4.84,
+    reviewsCount: 42,
+    descEn: 'Medical silicone ergonomic therapy squeeze egg designed to rebuild fine motor hand dexterity, tendon strength, and finger extension after paralysis.',
+    descBn: 'স্ট্রোক, নার্ভ ইনজুরি বা প্যারালাইসিসের রোগীদের হাতের আঙুল শক্ত হওয়া রোধ ও গ্রিপ ক্ষমতা বাড়াতে বিশেষ সিলিকন রিহ্যাব বল।',
+    benefitsBn: [
+      'হাতের আঙুলের নমনীয়তা ও গ্রিপ শক্তি দ্রুত বৃদ্ধি করে',
+      'রক্তনালীর রক্তপ্রবাহ সচল রাখে এবং হাত মুঠো করার ক্ষমতা ফেরায়',
+      'ধোয়া যায় এবং পকেটে নিয়ে যেকোনো সময় ব্যায়াম করা যায়'
+    ],
+    usageBn: 'দিনে ৩-৪ বার হাতের তালুতে রেখে আঙুল দিয়ে ৫ সেকেন্ড শক্ত করে চেপে ধরে রাখুন, তারপর ধীরে ধীরে হাত খুলুন। প্রতিবারে ২০ বার পুনরাবৃত্তি করুন।',
+    image: '/src/assets/images/rehab_stroke_mobility_1792459094091.jpg',
+    inStock: true,
+    recommendedFor: ['স্ট্রোক রিহ্যাব', 'প্যারালাইসিস', 'হাতের দুর্বলতা']
+  }
+];
+

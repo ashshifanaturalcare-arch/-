@@ -1,0 +1,190 @@
+{
+  "entities": {
+    "Appointment": {
+      "title": "Appointment",
+      "description": "Patient therapy appointment record at Shariatpur Therapy Hub",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique appointment token ID"
+        },
+        "patientName": {
+          "type": "string",
+          "description": "Full name of the patient",
+          "maxLength": 100
+        },
+        "patientPhone": {
+          "type": "string",
+          "description": "Contact phone number (Bangladesh format)",
+          "maxLength": 20
+        },
+        "patientAge": {
+          "type": "string",
+          "description": "Age of the patient",
+          "maxLength": 10
+        },
+        "patientGender": {
+          "type": "string",
+          "description": "Gender of the patient",
+          "enum": ["male", "female", "other"]
+        },
+        "serviceId": {
+          "type": "string",
+          "description": "ID of the selected therapy service"
+        },
+        "serviceTitle": {
+          "type": "string",
+          "description": "Name of the therapy service"
+        },
+        "therapistId": {
+          "type": "string",
+          "description": "ID of the selected therapist or 'any'"
+        },
+        "therapistName": {
+          "type": "string",
+          "description": "Name of the attending therapist"
+        },
+        "visitType": {
+          "type": "string",
+          "description": "Center visit at Town Chikandi or Home visit",
+          "enum": ["center", "home"]
+        },
+        "upazila": {
+          "type": "string",
+          "description": "Upazila area in Shariatpur"
+        },
+        "address": {
+          "type": "string",
+          "description": "Home address if visitType is home",
+          "maxLength": 255
+        },
+        "date": {
+          "type": "string",
+          "description": "Appointment date YYYY-MM-DD"
+        },
+        "timeSlot": {
+          "type": "string",
+          "description": "Time slot of session"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Patient complaints and symptoms",
+          "maxLength": 500
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the appointment",
+          "enum": ["confirmed", "pending", "completed", "cancelled"]
+        },
+        "totalBdt": {
+          "type": "number",
+          "description": "Total fee in Bangladeshi Taka (BDT)"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Optional authenticated patient UID"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp"
+        }
+      },
+      "required": ["patientName", "patientPhone", "serviceId", "date", "timeSlot", "status"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Patient success story and rating",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique review identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Reviewer patient name",
+          "maxLength": 100
+        },
+        "area": {
+          "type": "string",
+          "description": "Patient upazila or area",
+          "maxLength": 100
+        },
+        "serviceEn": {
+          "type": "string",
+          "description": "English name of service"
+        },
+        "serviceBn": {
+          "type": "string",
+          "description": "Bengali name of service"
+        },
+        "rating": {
+          "type": "number",
+          "description": "Rating score between 1 and 5"
+        },
+        "date": {
+          "type": "string",
+          "description": "Date of review YYYY-MM-DD"
+        },
+        "textEn": {
+          "type": "string",
+          "description": "Review story text",
+          "maxLength": 1000
+        },
+        "textBn": {
+          "type": "string",
+          "description": "Review story text in Bengali",
+          "maxLength": 1000
+        },
+        "therapistName": {
+          "type": "string",
+          "description": "Doctor who treated the patient",
+          "maxLength": 100
+        },
+        "verified": {
+          "type": "boolean",
+          "description": "Whether review is from a verified patient"
+        }
+      },
+      "required": ["name", "rating", "textEn"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Clinic administrator authorized to manage all patient records",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Admin email address"
+        },
+        "role": {
+          "type": "string",
+          "description": "Role level",
+          "enum": ["admin", "receptionist", "therapist"]
+        }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/appointments/{appointmentId}": {
+      "schema": {
+        "$ref": "#/entities/Appointment"
+      },
+      "description": "Collection of patient bookings and queue items"
+    },
+    "/reviews/{reviewId}": {
+      "schema": {
+        "$ref": "#/entities/Review"
+      },
+      "description": "Public patient reviews and ratings"
+    },
+    "/admins/{adminId}": {
+      "schema": {
+        "$ref": "#/entities/Admin"
+      },
+      "description": "Authorized clinic staff and administrators"
+    }
+  }
+}
